@@ -58,7 +58,7 @@ Carlos Trujillo - Universidad EAFIT - catrujilla@eafit.edu.co
 ## Citation
 If you use this code in your research, please cite the corresponding publication:
 
-Karina Ortega-Sánchez, Rene Restrepo, Alfonso Padilla-Vivanco, Ana Doblas, Carlos Trujillo, High-speed phase aberration correction in digital holographic microscopy via vortex-Legendre method. Optics Letters (2025). DOI: [Insert DOI]
+Karina Ortega-Sánchez, Rene Restrepo, Alfonso Padilla-Vivanco, Ana Doblas, Carlos Trujillo, High-speed phase aberration correction in digital holographic microscopy via vortex-Legendre method. Submitted to Optics Letters (2025). DOI: [Insert DOI]
 
 ## License
 This code is distributed under the MIT License. See the LICENSE file for details.
