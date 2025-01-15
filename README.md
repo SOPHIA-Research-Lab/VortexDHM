@@ -52,7 +52,7 @@ Detailed instructions and example datasets are provided in the repository.
 Karina Ortega-Sánchez - Universidad Politécnica de Tulancingo - karina.ortega2415006@upt.edu.mx 
 Rene Restrepo - Universidad EAFIT - rrestre6@eafit.edu.co
 Alfonso Padilla-Vivanco - Universidad Politécnica de Tulancingo
-Ana Doblas - University of Massachusetts Dartmouth
+Ana Doblas - University of Massachusetts Dartmouth - adoblas@umassd.edu
 Carlos Trujillo - Universidad EAFIT - catrujilla@eafit.edu.co
 
 ## Citation
