@@ -37,3 +37,35 @@ The Vortex-Legendre Method addresses common challenges in DHM by:
 1. Clone the repository:
    ```bash
    git clone https://github.com/sophiaresearchlaboratory/VortexDHM.git
+2. Install dependencies (e.g., MATLAB 2024b or compatible versions).
+
+Open the provided .m files in MATLAB to explore and run the implementation.
+
+## How to Use
+
+Prepare hologram images (e.g., USAF target, star target, or biological samples) as in the samples folder.
+Run the main script to process the hologram with the vortex-Legendre method.
+Visualize and analyze the corrected phase maps and extracted QPI metrics.
+Detailed instructions and example datasets are provided in the repository.
+
+## Authors
+Karina Ortega-Sánchez - Universidad Politécnica de Tulancingo - karina.ortega2415006@upt.edu.mx 
+Rene Restrepo - Universidad EAFIT - rrestre6@eafit.edu.co
+Alfonso Padilla-Vivanco - Universidad Politécnica de Tulancingo
+Ana Doblas - University of Massachusetts Dartmouth
+Carlos Trujillo - Universidad EAFIT - catrujilla@eafit.edu.co
+
+## Citation
+If you use this code in your research, please cite the corresponding publication:
+
+Karina Ortega-Sánchez, Rene Restrepo, Alfonso Padilla-Vivanco, Ana Doblas, Carlos Trujillo, High-speed phase aberration correction in digital holographic microscopy via vortex-Legendre method. Optics Letters (2025). DOI: [Insert DOI]
+
+## License
+This code is distributed under the MIT License. See the LICENSE file for details.
+
+## Acknowledgments
+We thank Assistant Professor Raul Castañeda for his valuable discussions and foundational contributions to the development of this work.
+
+## Contact
+For questions or further assistance, please reach out to: Carlos Trujillo, René Restrepo and Karina Ortega-Sanchez.
+Email: catrujilla@eafit.edu.co, rrestre6@eafit.edu.co, karina.ortega2415006@upt.edu.mx
