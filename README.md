@@ -60,14 +60,14 @@ The core of the Vortex-Legendre method is implemented in a special function in t
 The repository contains a main script (VortexLegendreCompensation_main), whose execution performs the process of load hologram, processing and visualizing the phase map compensation. 
 Before running this script, the hologram to be compensated must be specified. 
 Consider the physical parameters with which the hologram was recorded (these parameters are specified for the example holograms in the code such as: wavelength - 632.8 nm and pixel size - 3.75 um). 
-Once these parameters have been verified, you can run the script directly.
+Once these parameters have been verified, you can run the main script directly.
 The following functions are executed:
 
-(1)	functions_evaluation. This function allows the selection of the order (+1 DO).
+- **functions_evaluation** This function allows the selection of the order (+1 DO).
 
-(2)	Vortex compensation. This algorithm allows to find the frequencies for the tilt compensation using the Hilbert 2D transform (function hilbertTransform2D) and the residual theorem using vortex interpolation. At the end of these functions, the tilt aberration compensated phase map can be displayed.
+- **Vortex compensation** This algorithm allows to find the frequencies for the tilt compensation using the Hilbert 2D transform (function hilbertTransform2D) and the residual theorem using vortex interpolation. At the end of these functions, the tilt aberration compensated phase map can be displayed.
 
-(3)	Square Legendre fitting. This algorithm calculates the first 15th square Legendre polynomials. Then, the phase compensation is performed by calculating the coefficients corresponding to each polynomial. Finally, the final compensation is performed. 
+- **Square Legendre fitting**. This algorithm calculates the first 15th square Legendre polynomials. Then, the phase compensation is performed by calculating the coefficients corresponding to each polynomial. Finally, the final compensation is performed. 
 
 ### 3. Displaying the compensated phase map
 After the hologram is processed, you can visualize four figures including the spectrum of the hologram, the filtered spectrum hologram, the corrected tilt phase map and the complete map compensated with a Legendre polynomial. 
