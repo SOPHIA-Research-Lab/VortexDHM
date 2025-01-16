@@ -26,7 +26,7 @@ clear all% clear of memory all variable
 addpath('../holograms');
 
 %% Load the hologram 
-% name = 'starTarget.bmp'; %StarTraget telecentric
+name = 'starTarget.bmp'; %StarTraget telecentric
 % name =  'usaf.bmp'; %USAF telecentric
 % name ='-4cm_20x_star.tiff'; %Star target no telecentric
 % name =  'redBlood30mm.tiff'; % Red blood cell no telecentric
