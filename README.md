@@ -41,11 +41,13 @@ The Vortex-Legendre Method addresses common challenges in DHM by:
 
 Open the provided .m files in MATLAB to explore and run the implementation.
 
+---
+
 ## How to Use
 
 The following is a step-by-step guide to processing holograms using the Vortex-Legendre method and visualizing the corrected phase maps. 
 Once you download the files, it is important to save them in the same folder.
-# 1. Preparation of recorded holograms
+### 1. Preparation of recorded holograms
 The Vortex-Legendre method requires recorded holograms, which can come from various sources, such as USAF targets, target stars, or biological samples. 
 These holograms can be of telecentric or non-telecentric configuration.
 Example holograms can be found in the 'holograms' folder. This folder includes four examples:
@@ -53,7 +55,7 @@ Example holograms can be found in the 'holograms' folder. This folder includes f
 -	StarTarget (Telecentric configuration, "starTarget.bmp")
 -	Red Blood Cells (No telecentric configuration, 30 mm offset, "redBlood30mm.tiff")
 -	Star target (No telecentric configuration, 40 mm offset, "-4cm_20x_star.tiff")
-# 2. Using the Vortex-Legendre Method
+### 2. Using the Vortex-Legendre Method
 The core of the Vortex-Legendre method is implemented in a special function in the repository. 
 The repository contains a main script (VortexLegendreCompensation_main), whose execution performs the process of load hologram, processing and visualizing the phase map compensation. 
 Before running this script, the hologram to be compensated must be specified. 
@@ -63,26 +65,40 @@ The following functions are executed:
 (1)	functions_evaluation. This function allows the selection of the order (+1 DO).
 (2)	Vortex compensation. This algorithm allows to find the frequencies for the tilt compensation using the Hilbert 2D transform (function hilbertTransform2D) and the residual theorem using vortex interpolation. At the end of these functions, the tilt aberration compensated phase map can be displayed.
 (3)	Square Legendre fitting. This algorithm calculates the first 15th square Legendre polynomials. Then, the phase compensation is performed by calculating the coefficients corresponding to each polynomial. Finally, the final compensation is performed. 
-# 3. Displaying the compensated phase map
+### 3. Displaying the compensated phase map
 After the hologram is processed, you can visualize four figures including the spectrum of the hologram, the filtered spectrum hologram, the corrected tilt phase map and the complete map compensated with a Legendre polynomial. 
+
+---
 
 ## Authors
 Karina Ortega-Sánchez - Universidad Politécnica de Tulancingo - karina.ortega2415006@upt.edu.mx 
+
 Rene Restrepo - Universidad EAFIT - rrestre6@eafit.edu.co
+
 Alfonso Padilla-Vivanco - Universidad Politécnica de Tulancingo
+
 Ana Doblas - University of Massachusetts Dartmouth - adoblas@umassd.edu
+
 Carlos Trujillo - Universidad EAFIT - catrujilla@eafit.edu.co
+
+---
 
 ## Citation
 If you use this code in your research, please cite the corresponding publication:
 
-Karina Ortega-Sánchez, Rene Restrepo, Alfonso Padilla-Vivanco, Ana Doblas, Carlos Trujillo, High-speed phase aberration correction in digital holographic microscopy via vortex-Legendre method. Submitted to Optics Letters (2025). DOI: [Not yet ready]
+Karina Ortega-Sánchez, Rene Restrepo, Alfonso Padilla-Vivanco, Ana Doblas, Carlos Trujillo, High-speed phase aberration correction in digital holographic microscopy via vortex-Legendre method. Submitted to Optics Letters (2025). DOI: [Not ready yet]
+
+---
 
 ## License
 This code is distributed under the MIT License. See the LICENSE file for details.
 
+---
+
 ## Acknowledgments
 We thank Assistant Professor Raul Castañeda for his valuable discussions and foundational contributions to the development of this work.
+
+---
 
 ## Contact
 For questions or further assistance, please reach out to: Carlos Trujillo, René Restrepo and Karina Ortega-Sanchez.
