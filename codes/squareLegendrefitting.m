@@ -19,7 +19,8 @@
 % version 1.0 (2024)                                                               
 % Notes-->       
 function polynomials = squareLegendrefitting(order, x, y)
-all_polynomials = {x;
+all_polynomials = {1;
+    x;
     y;
     ((3.*(x.^2))-1)/2;
     x.*y;
@@ -34,7 +35,11 @@ all_polynomials = {x;
     (x.*y.*((5.*(y.^2))-3))/2;
     ((35.*(y.^4))-(30.*(y.^2))+3)/8;};
 
-polynomials = zeros(size(x));
+    polynomials = zeros(size(x));
+for i = 1:length(order)
+    polynomials(:,:,i) = all_polynomials{order(i)};
+end
+end
 for i = 1:length(order)
     polynomials(:,:,i) = all_polynomials{order(i)};
 end
