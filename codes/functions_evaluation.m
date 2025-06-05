@@ -55,10 +55,10 @@ classdef functions_evaluation
             holo_filtered = fftshift(ifft2(fftshift(ft_holo_filtered)));
             
             if visual == 'Yes'
-                figure,imagesc(log(abs(ft_holo).^2)),colormap(gray),title('FT Hologram'),daspect([1 1 1]) 
-                %figure,imagesc(log(abs(region_interest).^2)),colormap(gray),title('ROI FT Hologram'),daspect([1 1 1]) 
-                %figure,imagesc(cir_mask),colormap(gray),title('Circular Filter'),daspect([1 1 1])     
-                figure,imagesc(log(abs(ft_holo_filtered).^2)),colormap(gray),title('FT Filtered Hologram'),daspect([1 1 1]) 
+                figure,imagesc(log(abs(ft_holo).^2)),colormap(gray),title('FT Hologram'),daspect([1 1 1])
+                figure,imagesc(cir_mask),colormap(gray),title('Circular Filter'),daspect([1 1 1])
+                figure,imagesc(log(abs(ft_holo_filtered).^2)),colormap(gray),title('FT Filtered Hologram'),daspect([1 1 1])
+                saveas(gcf, 'mask.bmp');
             end
         end
 
@@ -67,6 +67,27 @@ classdef functions_evaluation
             theta_x = asin((fx_0 - fx_max) * lambda / (M * dxy));
             theta_y = asin((fy_0 - fy_max) * lambda / (N * dxy));
             ref_wave = exp(1i * k * (sin(theta_x) * n * dxy + sin(theta_y) * m * dxy));
+        end
+
+        function [cf] = minimization_LegCoeff(seed, gridSize, Legendres, Legendre_Coefficients, Legendres_norm_const, polynomials, field_compensate)
+            cf = 0;
+
+            Legendre_Coefficients=[seed Legendre_Coefficients(1:end)];
+            Legendres_norm_const=[1 Legendres_norm_const(1:end)];
+            Legendres=[ones(length(Legendres),1) Legendres];
+
+            WavefrontReconstructed_Vect = sum(repmat(Legendre_Coefficients(1:end)./ ...
+                                        sqrt(Legendres_norm_const(1:end)),[size(Legendres,1) 1]).*Legendres(:,1:end),2);
+            WavefrontReconstructed = reshape(WavefrontReconstructed_Vect, [size(polynomials, 1) size(polynomials, 2)]);
+
+            PhaseNoPistonAndTilts = (exp(1i.* angle(field_compensate(1:gridSize, 1:gridSize)))./ ...
+                                    exp((1i).*WavefrontReconstructed));
+
+            phase = angle(PhaseNoPistonAndTilts);
+            [M,N] = size(phase);
+            ib = imbinarize(phase, 0.5);
+            cf = M*N - sum(ib(:));
+            
         end
 
 
@@ -87,7 +108,7 @@ classdef functions_evaluation
             
             % max values first peak
             maxValue_1 = max(max(abs(fft_holo_I)));
-            [fy_max_1 fx_max_1] = find(abs(fft_holo_I) == maxValue_1)
+            [fy_max_1, fx_max_1] = find(abs(fft_holo_I) == maxValue_1);
             mask(fy_max_1 - 20:fy_max_1 + 20,fx_max_1 - 20:fx_max_1 + 20)=0;
             fx_max_L = fx_max_1;
             fy_max_L = fy_max_1;
@@ -95,7 +116,7 @@ classdef functions_evaluation
             figure,imagesc(log(abs(fft_holo_I).^2)),colormap(gray),title('FT FIrst peak'),daspect([1 1 1])
             
             maxValue_1 = max(max(abs(fft_holo_I)));
-            [fy_max_1 fx_max_1] = find(abs(fft_holo_I) == maxValue_1);
+            [fy_max_1, fx_max_1] = find(abs(fft_holo_I) == maxValue_1);
             fx_max_D = fx_max_1(1);
             fy_max_D = fy_max_1(1);
         
@@ -114,7 +135,6 @@ classdef functions_evaluation
             holo_filter_1 = fftshift(ifft2(fftshift(fft_filter_holo)));
         
             fft_holo_2 = fftshift(fft2(fftshift(holo(:,:,2)))); 
-            %fft_filter_holo_2 = fft_holo_2 .* filter;
             fft_filter_holo_2 = fft_holo_2 .* mask;
             holo_filter_2 = fftshift(ifft2(fftshift(fft_filter_holo_2)));
         
@@ -148,9 +168,6 @@ classdef functions_evaluation
             phase_save = uint8(255 * mat2gray(phase));
             ib = imbinarize(phase_save, 0.1);
             cf = M*N - sum(ib(:));
-
-            %target = ones(M, N); % Supongamos que el objetivo es una imagen completamente binarizada (blanca)
-            %cf_particleswarm = double(target(:)) - double(ib(:));
         end
 
 
@@ -180,14 +197,12 @@ classdef functions_evaluation
             maxL = abs(Dplus(fy_max(1),fx_max(1)));
             maxR = abs(Dplus(fy_max(2),fx_max(2)));
             
-            %cf = 1/abs(maxR - maxL);
             cf =  maxR/abs(maxR + maxL);
     
         end
 
         function [D] = demComp2SIDHM(theta, H)
             [X, Y, no] = size(H); 
-            % You need to return the following variables correctly 
             D = zeros(X,Y,no);
             M = 1/2*[exp(1i*theta(1)) exp(-1i*theta(1));exp(1i*theta(2)) exp(-1i*theta(2))];
             Minv = inv(M);
@@ -197,5 +212,8 @@ classdef functions_evaluation
         end
     end
 end
+
+
+
 
 
