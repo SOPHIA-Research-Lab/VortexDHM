@@ -25,7 +25,8 @@ close all% close all windows
 clear all% clear of memory all variable
 
 %% Lines to add folders for reading images and/or functions
-addpath('../vortex/HoloPaper');
+%addpath('../vortex/HoloPaper');
+addpath('../holograms/');
 
 %% Load the hologram
 
